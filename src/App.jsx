@@ -121,7 +121,7 @@ function App() {
     return (end.getTime() - start.getTime()) / 1000;
   };
 
-  // Find Moderator fetch
+  // Model owners fetch
   const fetchModerator = useCallback(async (mid) => {
     if (!mid.trim()) { setFindModResult(null); return; }
     setFindModLoading(true);
@@ -318,7 +318,7 @@ function App() {
             <Shield className="shield-icon" />
           </div>
           <div>
-            <h1>MFW Ingestion</h1>
+            <h1>MFW Analysis Board</h1>
             <span className="sub-brand">Live Monitor (Col: {status.collection})</span>
           </div>
         </div>
@@ -379,8 +379,8 @@ function App() {
             >
               <span className="tab-icon">👤</span>
               <div className="tab-label">
-                <span className="tab-title">Find Moderator</span>
-                <span className="tab-desc">Lookup batch moderator</span>
+                <span className="tab-title">Model owners</span>
+                <span className="tab-desc">Lookup model owners</span>
               </div>
             </button>
           </div>
@@ -504,11 +504,11 @@ function App() {
           </div>
         )}
 
-        {/* Find Moderator – lookup moderation/batch by mediaId */}
+        {/* Model owners – lookup moderation/batch by mediaId */}
         {mode === 'findMod' && (
           <div className="control-group animate-slide-in">
-            <h3 className="section-title-divider">Find Moderator</h3>
-            <p className="help-text" style={{ marginBottom: '12px' }}>Enter a Media ID to find the assigned moderator from the moderation batch collection.</p>
+            <h3 className="section-title-divider">Model owners</h3>
+            <p className="help-text" style={{ marginBottom: '12px' }}>Enter a Media ID to find the assigned model owners</p>
             <div className="input-field">
               <label>Media ID</label>
               <input
@@ -606,13 +606,13 @@ function App() {
               {mode === 'live' && 'Live Feed (Real-Time)'}
               {mode === 'query' && 'Custom Date Range Query'}
               {mode === 'find' && 'Find Document'}
-              {mode === 'findMod' && 'Find Moderator'}
+              {mode === 'findMod' && 'Model owners'}
             </h2>
             <p>
               {mode === 'live' && 'Displaying documents processed between [now − 2m] and [now − 1m].'}
               {mode === 'query' && `Showing records from ${queryStartTime || '…'} to ${queryEndTime || '…'}.`}
               {mode === 'find' && 'ID-only search across the full collection — no time filter applied.'}
-              {mode === 'findMod' && 'Lookup the assigned moderator for a batch from the moderation collection.'}
+              {mode === 'findMod' && 'Lookup the assigned model owners'}
             </p>
           </div>
 
@@ -702,7 +702,7 @@ function App() {
             </div>
           )}
 
-          {/* Find Moderator Result Panel */}
+          {/* Model owners Result Panel */}
           {mode === 'findMod' && (
             <div style={{ padding: '0 0 24px 0' }}>
               {findModError && (
@@ -748,7 +748,7 @@ function App() {
                 </div>
               )}
               {!findModResult && !findModLoading && !findModError && (
-                <div className="alert-banner"><div className="alert-icon">👤</div><div className="alert-content"><h4>Enter a Media ID above</h4><p>Type a Media ID and click Search Moderator to look up the assigned moderator.</p></div></div>
+                <div className="alert-banner"><div className="alert-icon">👤</div><div className="alert-content"><h4>Enter a Media ID above</h4><p>Type a Media ID and click Search Moderator to look up the assigned model owners.</p></div></div>
               )}
             </div>
           )}
